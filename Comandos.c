@@ -6,6 +6,10 @@ Imprimir dados -> printf("TEXTO");
 
 %f -> float -> Número com decimal
 %d -> int -> Númemro inteiro
+%c -> caractere
+%u -> inteiro sem sinal
+%e -> notação científica
+%s -> strings
 
 COMPARAÇÃO:
 
