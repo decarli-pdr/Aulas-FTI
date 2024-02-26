@@ -1,4 +1,4 @@
-/* Aula 2  19FEV2024
+/* Exercício 1  19FEV2024
 Asp 1021 Pedro DE CARLI Silva*/
 
 #include <stdio.h>
