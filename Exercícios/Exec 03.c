@@ -14,7 +14,7 @@ int main() // é a função principal
     {
         soma = soma + i; // adiciona i na variável soma
         scanf("%d", &i); // lê i
-        printf("Insira um número para ser somado (-1 termina): ")
+        printf("Insira um número para ser somado (-1 termina): ");
     }
     soma++;                           // aumenta soma em 1 (porque para parar precisamos digitar um -1, que acaba sendo somado)
     printf("\nA soma resultou em: "); // escreve o valor da soma no final
