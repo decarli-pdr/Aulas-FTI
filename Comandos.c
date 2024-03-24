@@ -62,5 +62,13 @@ OPERAÇÕES:
 %   módulo
 ^   expoente
 
+x++     aumenta x em 1 unidade
+x--     diminui x em 1 unidade
+x+=y    aumenta x em y unidades
+x-=y    subtrai x em y unidades
+x*=y    multiplica x por y
+x-=y    divide x por y
+--------------------------------------------------------------------------------
+
 
 */
