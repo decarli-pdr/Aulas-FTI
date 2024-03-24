@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main()
-{
+{   
     int quantidadeNotas = 0;
     float media, nota = 0;
     printf("%s", "Olá, digite quantas notas desejará ler: ");
@@ -15,6 +15,6 @@ int main()
     }
     media /= quantidadeNotas;
     printf("A média das %d", quantidadeNotas);
-    printf(" notas é: %f", media);
+    printf(" notas é: %2.2f", media);
     return 0;
 }
