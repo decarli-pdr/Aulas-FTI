@@ -8,7 +8,7 @@ main(){
 --------------------------------------------------------------------------------
 Ler dados -> scanf("formatação",&variavel);
 --------------------------------------------------------------------------------
-Imprimir dados -> printf("TEXTO"); ou printf("formatação",variável)
+Imprimir dados -> printf("%s","TEXTO"); ou printf("formatação",variável)
 --------------------------------------------------------------------------------
 %f -> float -> Número com decimal = float variavel ou float variavel=10;
 %d -> int -> Númemro inteiro = int variavel
@@ -34,16 +34,33 @@ LÓGICA:
 --------------------------------------------------------------------------------
 SE:
 
-if (a==3 &&b <=2)
+if (a==3 && b <=2)
 {
      CÓDIGO
-     };
+     }
 else{
     CÓDIGO SENÃO
-};
+}
 --------------------------------------------------------------------------------
 PULAR LINHA NO TEXTO:
 
 \n
+--------------------------------------------------------------------------------
+ENQUANTO:
+ while(CONDIÇÃO){
+
+    COMANDO
+
+ }
+--------------------------------------------------------------------------------
+OPERAÇÕES:
+
++   soma   
+-   subtração
+/   divisão
+*   multiplicação
+%   módulo
+^   expoente
+
 
 */
