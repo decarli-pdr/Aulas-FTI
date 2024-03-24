@@ -69,6 +69,24 @@ x-=y    subtrai x em y unidades
 x*=y    multiplica x por y
 x-=y    divide x por y
 --------------------------------------------------------------------------------
+FOR:
 
+for(Inicialização;condição;incremento){
 
+        COMANDOS
+
+}
+
+Ex:
+
+for (int i=0;i<=10;i++){
+    printf("\n%d",i);
+}
+--------------------------------------------------------------------------------
+COMENTÁRIOS:
+
+//texto  comenta a linha
+
+/*
+comenta tudo entre as linhas
 */
