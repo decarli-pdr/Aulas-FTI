@@ -1,8 +1,14 @@
 /*
 
+main(){
+    //todos os comandos começam com esse main()
+
+    return 0;
+}
+
 Ler dados -> scanf("formatação",&variavel);
 
-Imprimir dados -> printf("TEXTO");
+Imprimir dados -> printf("TEXTO"); ou printf("formatação",variável)
 
 %f -> float -> Número com decimal
 %d -> int -> Númemro inteiro
