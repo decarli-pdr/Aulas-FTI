@@ -14,7 +14,6 @@ int main()
         media += nota;
     }
     media /= quantidadeNotas;
-    printf("A média das %d", quantidadeNotas);
-    printf(" notas é: %2.2f", media);
+    printf("A média das %d notas é %2.2f", quantidadeNotas,media);
     return 0;
 }
