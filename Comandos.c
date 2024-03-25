@@ -8,7 +8,7 @@ main(){
 --------------------------------------------------------------------------------
 Ler dados -> scanf("formatação",&variavel);
 --------------------------------------------------------------------------------
-Imprimir dados -> printf("TEXTO E FORMATAÇÃO",var1,var2,var3[...]);
+Imprimir dados -> printf("TEXTO E FORMATAÇÃO",var1,var2,var3[...    ]);
 --------------------------------------------------------------------------------
 %f -> float -> Número com decimal = float variavel ou float variavel=10;
 %d -> int -> Númemro inteiro = int variavel
