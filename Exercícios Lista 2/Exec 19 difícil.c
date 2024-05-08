@@ -3,21 +3,21 @@ int main()
 {
     int r[10], s[20], x[30], aux, indicer = 0, indices = 0, indicex = 0, termineir = 0, termineis = 0, termineix = 0;
 
-    printf("Digite 11 números no vetor r: ");
-    for (int i = 0; i <= 10; i++)
+    printf("Digite 10 números no vetor r: ");
+    for (int i = 0; i < 10; i++)
     {
         scanf("%d", &r[i]);
     }
 
-    printf("Digite 21 números no vetor s: ");
-    for (int i = 0; i <= 20; i++)
+    printf("Digite 20 números no vetor s: ");
+    for (int i = 0; i < 20; i++)
     {
         scanf("%d", &s[i]);
     }
 
-    for (int i = 0; i <= 10; i++)
+    for (int i = 0; i < 10; i++)
     {
-        for (int b = 0; b <= 10; b++)
+        for (int b = 0; b < 10; b++)
         {
             if (r[b] > r[b + 1])
             {
@@ -28,9 +28,9 @@ int main()
         }
     }
 
-    for (int i = 0; i <= 20; i++)
+    for (int i = 0; i < 20; i++)
     {
-        for (int b = 0; b <= 20; b++)
+        for (int b = 0; b < 20; b++)
         {
             if (s[b] > s[b + 1])
             {
@@ -41,10 +41,10 @@ int main()
         }
     }
 
-    while (indicer != 10 && indices != 20)
+    while (indicer != 9 && indices != 19)
     {
 
-        if (indicer < 11 && r[indicer] < s[indices])
+        if (indicer < 10 && r[indicer] < s[indices])
         {
 
             x[indicex] = r[indicer];
@@ -52,7 +52,7 @@ int main()
             indicex++;
         }
 
-        if (indices < 21 && s[indices] < r[indicer])
+        if (indices < 20 && s[indices] < r[indicer])
         {
 
             x[indicex] = s[indices];
@@ -69,7 +69,7 @@ int main()
         }
     }
 
-    while (indicex < 31)
+    while (indicex < 30)
     {
         x[indicex] = 0;
         indicex++;
