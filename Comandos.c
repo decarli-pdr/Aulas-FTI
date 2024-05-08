@@ -90,3 +90,9 @@ COMENTÁRIOS:
 /*
 comenta tudo entre as linhas
 */
+
+/* Bibliotecas:
+
+#include<stdio.h>
+#include<math.h>
+#include<string.h> */
