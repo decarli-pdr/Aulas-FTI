@@ -95,4 +95,19 @@ comenta tudo entre as linhas
 
 #include<stdio.h>
 #include<math.h>
-#include<string.h> */
+#include<string.h> 
+
+char letra; //armazena 1 caractere
+scanf("%c",&letra);
+
+
+char palavra[11];   //armazena vetores de letras
+scanf("%s",palavra);
+scanf("%s",palavra[indice]);
+
+gets(palavra);      //Lê o valor ignorando o tamanho
+fgets(palavra,Int tamanho,stdin);     //Lê o valor cuidando do tamanho
+
+strcpy(variável,"conteudo");            //salva o conteúdo
+
+*/
