@@ -60,7 +60,6 @@ OPERAÇÕES:
 /   divisão
 *   multiplicação
 %   módulo
-^   expoente
 
 x++     aumenta x em 1 unidade
 x--     diminui x em 1 unidade
@@ -97,17 +96,20 @@ comenta tudo entre as linhas
 #include<math.h>
 #include<string.h> 
 
-char letra; //armazena 1 caractere
+char letra = 'a'; //armazena 1 caractere
 scanf("%c",&letra);
 
 
-char palavra[11];   //armazena vetores de letras
+char palavra[11] = {'a','b','a','t','e','\0'}  //armazena vetores de letras
 scanf("%s",palavra);
-scanf("%s",palavra[indice]);
+
+scanf("%s",palavra[indice]);                //lê strings até o espaço
 
 gets(palavra);      //Lê o valor ignorando o tamanho
+fflush(stdin);      //Limpa o buffer
 fgets(palavra,Int tamanho,stdin);     //Lê o valor cuidando do tamanho
 
 strcpy(variável,"conteudo");            //salva o conteúdo
 
+palavra[2][3] = 'o';
 */
