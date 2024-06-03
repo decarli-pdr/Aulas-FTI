@@ -112,4 +112,7 @@ fgets(palavra,Int tamanho,stdin);     //Lê o valor cuidando do tamanho
 strcpy(variável,"conteudo");            //salva o conteúdo
 
 palavra[2][3] = 'o';
+
+
+%3.1f - 3 no total, 1 decimal
 */
