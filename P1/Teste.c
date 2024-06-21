@@ -44,7 +44,7 @@ int emordem = 0;
 while(emordem==0){
     emordem=1;
     for(x=0;x<i-1;x++){
-        if(strcmp(nomes[x],nomes[x+1])>0){
+        if(strcmp(nomes[x],nomes[x+1])==1){
         strcpy(aux,nomes[x]);
         strcpy(nomes[x],nomes[x+1]);
         strcpy(nomes[x+1],aux);
