@@ -1,0 +1,161 @@
+"/Microsoft Windows [versão 10.0.19045.4780]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\PROFESSOR>SQLITE3 LIVRARIA.DB
+'SQLITE3' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\Users\PROFESSOR>CD \SQLITE
+
+C:\sqlite>DIR
+ O volume na unidade C não tem nome.
+ O Número de Série do Volume é 1A3E-D9D1
+
+ Pasta de C:\sqlite
+
+19/08/2024  07:21    <DIR>          .
+19/08/2024  07:21    <DIR>          ..
+19/08/2024  07:21            12.288 escola.db
+23/08/2021  10:49         1.070.080 sqlite3.exe
+               2 arquivo(s)      1.082.368 bytes
+               2 pasta(s)   162.486.550.528 bytes disponíveis
+
+C:\sqlite>SQLITE3 LIVRARIA.DB
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+sqlite> .help
+.explain ?on|off|auto?   Change the EXPLAIN formatting mode.  Default: auto
+.headers on|off          Turn display of headers on or off
+.help ?-all? ?PATTERN?   Show help text for PATTERN
+.load FILE ?ENTRY?       Load an extension library
+.quit                    Exit this program
+.read FILE               Read input from FILE
+.schema ?PATTERN?        Show the CREATE statements matching PATTERN
+.show                    Show the current values for various settings
+.tables ?TABLE?          List names of tables matching LIKE pattern TABLE
+sqlite>
+sqlite> .table
+sqlite> .schema
+sqlite> CREATE TABLE AUTORES(
+   ...> CODIGOAUTOR INT PRIMARY KEY,
+   ...> NOMEAUTOR VARCHAR(30));
+sqlite> .table
+AUTORES
+sqlite> .schema
+CREATE TABLE AUTORES(
+CODIGOAUTOR INT PRIMARY KEY,
+NOMEAUTOR VARCHAR(30));
+sqlite> CREATE TABLE LIVROS(
+   ...> ISBNLIVRO CHAR(11) PRIMARY KEY,
+   ...> NOMELIVRO VARCHAR(30));
+sqlite> CREATE TABLE AUTORIA(
+   ...> CODIGOAUTOR INT,
+   ...> ISBNLIVRO CHAR(11),
+   ...> PRIMARY KEY(CODIGOAUTOR,ISBNLIVRO));
+sqlite> .tables
+AUTORES  AUTORIA  LIVROS
+sqlite> .schema
+CREATE TABLE AUTORES(
+CODIGOAUTOR INT PRIMARY KEY,
+NOMEAUTOR VARCHAR(30));
+CREATE TABLE LIVROS(
+ISBNLIVRO CHAR(11) PRIMARY KEY,
+NOMELIVRO VARCHAR(30));
+CREATE TABLE AUTORIA(
+CODIGOAUTOR INT,
+ISBNLIVRO CHAR(11),
+PRIMARY KEY(CODIGOAUTOR,ISBNLIVRO));
+sqlite>
+sqlite>
+sqlite>
+sqlite> .schema
+CREATE TABLE AUTORES(
+CODIGOAUTOR INT PRIMARY KEY,
+NOMEAUTOR VARCHAR(30));
+CREATE TABLE LIVROS(
+ISBNLIVRO CHAR(11) PRIMARY KEY,
+NOMELIVRO VARCHAR(30));
+CREATE TABLE AUTORIA(
+CODIGOAUTOR INT,
+ISBNLIVRO CHAR(11),
+PRIMARY KEY(CODIGOAUTOR,ISBNLIVRO));
+sqlite>
+sqlite>
+sqlite> .tables
+AUTORES  AUTORIA  LIVROS
+sqlite>
+sqlite>
+sqlite> INSERT INTO AUTORES VALUES(1,"Machado de Assis");
+sqlite> INSERT INTO AUTORES VALUES(1,"Jose de Alencar");
+Error: UNIQUE constraint failed: AUTORES.CODIGOAUTOR
+sqlite> INSERT INTO AUTORES VALUES(2,"Jose de Alencar");
+sqlite>
+sqlite>
+sqlite> SELECT * FROM AUTORES;
+1|Machado de Assis
+2|Jose de Alencar
+sqlite>
+sqlite>
+sqlite> INSERT INTO LIVROS VALUES("1111","Machado de Assis");
+sqlite> INSERT INTO LIVROS VALUES("2222","Quincas Borbas");
+sqlite> INSERT INTO LIVROS VALUES("3333","O Guarani");
+sqlite> INSERT INTO LIVROS VALUES("4444","Iracema");
+sqlite>
+sqlite> INSERT INTO AUTORIA(ISBNLIVRO, CODIGOAUTOR) VALUES("1111",1);
+sqlite> INSERT INTO AUTORIA(ISBNLIVRO, CODIGOAUTOR) VALUES("2222",1);
+sqlite> INSERT INTO AUTORIA(ISBNLIVRO, CODIGOAUTOR) VALUES("3333",2);
+sqlite> INSERT INTO AUTORIA(ISBNLIVRO, CODIGOAUTOR) VALUES("4444",2);
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite> SELECT NOMEAUTOR, NOMELIVRO FROM AUTORES,AUTORIA, LIVROS;
+Machado de Assis|Machado de Assis
+Machado de Assis|Quincas Borbas
+Machado de Assis|O Guarani
+Machado de Assis|Iracema
+Machado de Assis|Machado de Assis
+Machado de Assis|Quincas Borbas
+Machado de Assis|O Guarani
+Machado de Assis|Iracema
+Machado de Assis|Machado de Assis
+Machado de Assis|Quincas Borbas
+Machado de Assis|O Guarani
+Machado de Assis|Iracema
+Machado de Assis|Machado de Assis
+Machado de Assis|Quincas Borbas
+Machado de Assis|O Guarani
+Machado de Assis|Iracema
+Jose de Alencar|Machado de Assis
+Jose de Alencar|Quincas Borbas
+Jose de Alencar|O Guarani
+Jose de Alencar|Iracema
+Jose de Alencar|Machado de Assis
+Jose de Alencar|Quincas Borbas
+Jose de Alencar|O Guarani
+Jose de Alencar|Iracema
+Jose de Alencar|Machado de Assis
+Jose de Alencar|Quincas Borbas
+Jose de Alencar|O Guarani
+Jose de Alencar|Iracema
+Jose de Alencar|Machado de Assis
+Jose de Alencar|Quincas Borbas
+Jose de Alencar|O Guarani
+Jose de Alencar|Iracema
+sqlite>
+
+sqlite>
+sqlite> UPDATE LIVROS SET NOMELIVRO = "Dom Casmurro" WHERE ISBNLIVRO = "1111";
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite> SELECT NOMEAUTOR, NOMELIVRO FROM AUTORES,AUTORIA, LIVROS
+   ...> WHERE LIVROS.ISBNLIVRO=AUTORIA.ISBNLIVRO AND AUTORES.CODIGOAUTOR=AUTORIA.CODIGOAUTOR;
+Machado de Assis|Dom Casmurro
+Machado de Assis|Quincas Borbas
+Jose de Alencar|O Guarani
+Jose de Alencar|Iracema
+sqlite> .quit

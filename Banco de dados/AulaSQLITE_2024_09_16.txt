@@ -1,0 +1,356 @@
+Microsoft Windows [versão 10.0.19045.4894]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\PROFESSOR>cd \sqlite
+
+C:\sqlite>
+C:\sqlite>dir
+ O volume na unidade C não tem nome.
+ O Número de Série do Volume é 1A3E-D9D1
+
+ Pasta de C:\sqlite
+
+26/08/2024  09:29    <DIR>          .
+26/08/2024  09:29    <DIR>          ..
+19/08/2024  09:09            12.288 ESCOLA.DB
+26/08/2024  09:29            28.672 LIVRARIA.DB
+23/08/2021  10:49         1.070.080 sqlite3.exe
+               3 arquivo(s)      1.111.040 bytes
+               2 pasta(s)   123.753.627.648 bytes disponíveis
+
+C:\sqlite>SQLITE3 BIBLIOTECA.DB
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+sqlite>
+sqlite> .HELP
+Error: unknown command or invalid arguments:  "HELP". Enter ".help" for help
+sqlite> .help
+.archive ...             Manage SQL archives
+.auth ON|OFF             Show authorizer callbacks
+.backup ?DB? FILE        Backup DB (default "main") to FILE
+.bail on|off             Stop after hitting an error.  Default OFF
+.binary on|off           Turn binary output on or off.  Default OFF
+.cd DIRECTORY            Change the working directory to DIRECTORY
+.changes on|off          Show number of rows changed by SQL
+.check GLOB              Fail if output since .testcase does not match
+.clone NEWDB             Clone data into NEWDB from the existing database
+.databases               List names and files of attached databases
+.dbconfig ?op? ?val?     List or change sqlite3_db_config() options
+.dbinfo ?DB?             Show status information about the database
+.dump ?OBJECTS?          Render database content as SQL
+.echo on|off             Turn command echo on or off
+.eqp on|off|full|...     Enable or disable automatic EXPLAIN QUERY PLAN
+.excel                   Display the output of next command in spreadsheet
+.exit ?CODE?             Exit this program with return-code CODE
+.expert                  EXPERIMENTAL. Suggest indexes for queries
+.explain ?on|off|auto?   Change the EXPLAIN formatting mode.  Default: auto
+.filectrl CMD ...        Run various sqlite3_file_control() operations
+.fullschema ?--indent?   Show schema and the content of sqlite_stat tables
+.headers on|off          Turn display of headers on or off
+.help ?-all? ?PATTERN?   Show help text for PATTERN
+.import FILE TABLE       Import data from FILE into TABLE
+.imposter INDEX TABLE    Create imposter table TABLE on index INDEX
+.indexes ?TABLE?         Show names of indexes
+.limit ?LIMIT? ?VAL?     Display or change the value of an SQLITE_LIMIT
+.lint OPTIONS            Report potential schema issues.
+.load FILE ?ENTRY?       Load an extension library
+.log FILE|off            Turn logging on or off.  FILE can be stderr/stdout
+.mode MODE ?TABLE?       Set output mode
+.nullvalue STRING        Use STRING in place of NULL values
+.once ?OPTIONS? ?FILE?   Output for the next SQL command only to FILE
+.open ?OPTIONS? ?FILE?   Close existing database and reopen FILE
+.output ?FILE?           Send output to FILE or stdout if FILE is omitted
+.parameter CMD ...       Manage SQL parameter bindings
+.print STRING...         Print literal STRING
+.progress N              Invoke progress handler after every N opcodes
+.prompt MAIN CONTINUE    Replace the standard prompts
+.quit                    Exit this program
+.read FILE               Read input from FILE
+.recover                 Recover as much data as possible from corrupt db.
+.restore ?DB? FILE       Restore content of DB (default "main") from FILE
+.save FILE               Write in-memory database into FILE
+.scanstats on|off        Turn sqlite3_stmt_scanstatus() metrics on or off
+.schema ?PATTERN?        Show the CREATE statements matching PATTERN
+.selftest ?OPTIONS?      Run tests defined in the SELFTEST table
+.separator COL ?ROW?     Change the column and row separators
+.session ?NAME? CMD ...  Create or control sessions
+.sha3sum ...             Compute a SHA3 hash of database content
+.shell CMD ARGS...       Run CMD ARGS... in a system shell
+.show                    Show the current values for various settings
+.stats ?ARG?             Show stats or turn stats on or off
+.system CMD ARGS...      Run CMD ARGS... in a system shell
+.tables ?TABLE?          List names of tables matching LIKE pattern TABLE
+.testcase NAME           Begin redirecting output to 'testcase-out.txt'
+.testctrl CMD ...        Run various sqlite3_test_control() operations
+.timeout MS              Try opening locked tables for MS milliseconds
+.timer on|off            Turn SQL timer on or off
+.trace ?OPTIONS?         Output each SQL statement as it is run
+.vfsinfo ?AUX?           Information about the top-level VFS
+.vfslist                 List all available VFSes
+.vfsname ?AUX?           Print the name of the VFS stack
+.width NUM1 NUM2 ...     Set minimum column widths for columnar output
+sqlite>
+sqlite>
+sqlite> .tables
+sqlite> sche,
+   ...>
+   ...> ;
+Error: near "sche": syntax error
+sqlite> .schema
+sqlite> .databases
+main: C:\sqlite\BIBLIOTECA.DB r/w
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite> CREATE TABLE Autores(
+   ...> CodigoAutor int primary key,
+   ...> NomeAutor varchar(30));
+sqlite> .tables
+Autores
+sqlite> .schema
+CREATE TABLE Autores(
+CodigoAutor int primary key,
+NomeAutor varchar(30));
+sqlite>
+sqlite>
+sqlite> ]
+   ...>
+   ...>
+   ...> ;
+Error: unrecognized token: "]"
+sqlite> CREATE TABLE LIVROS(
+   ...> ISBNLivro char(13) primary key,
+   ...> NomeLivro varchar(30));
+sqlite>
+sqlite> .tables
+Autores  LIVROS
+sqlite> drop table livros;
+sqlite> .tables
+Autores
+sqlite> CREATE TABLE Livros(
+   ...> ISBNLivro char(13) primary key,
+   ...> NomeLivro varchar(30));
+sqlite> .table
+Autores  Livros
+sqlite>
+sqlite> CREATE TABLE Autoria(
+   ...> CodigoAutor int,
+   ...> ISBNLivro char(13),
+   ...> primary key(CodigoAutor, ISBNLivro));
+sqlite>
+sqlite>
+sqlite> .tables
+Autores  Autoria  Livros
+sqlite> .schema
+CREATE TABLE Autores(
+CodigoAutor int primary key,
+NomeAutor varchar(30));
+CREATE TABLE Livros(
+ISBNLivro char(13) primary key,
+NomeLivro varchar(30));
+CREATE TABLE Autoria(
+CodigoAutor int,
+ISBNLivro char(13),
+primary key(CodigoAutor, ISBNLivro));
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite> INSERT INTO Autores Values(1, "Paulo Coelho");
+sqlite> INSERT INTO Autores Values(1, "Machado de Assis");
+Error: UNIQUE constraint failed: Autores.CodigoAutor
+sqlite> INSERT INTO Autores Values(2, "Machado de Assis");
+sqlite> INSERT INTO Autores Values(3, "Jose de Alencar");
+sqlite>
+sqlite>
+sqlite>
+sqlite> SELECT * FROM LIVROS;
+sqlite> SELECT * FROM AUTORES;
+1|Paulo Coelho
+2|Machado de Assis
+3|Jose de Alencar
+sqlite>
+sqlite>
+sqlite> INSERT INTO LIVROS VALUES("1111", "Brida");
+sqlite> INSERT INTO LIVROS VALUES("2222", "O Alquimista");
+sqlite> INSERT INTO LIVROS VALUES("3333", "Dom Casmurro");
+sqlite> INSERT INTO LIVROS VALUES("4444", "O Guarani");
+sqlite>
+sqlite>
+sqlite> SELECT * FROM LIVROS;
+1111|Brida
+2222|O Alquimista
+3333|Dom Casmurro
+4444|O Guarani
+sqlite> .explain on
+sqlite> SELECT * FROM LIVROS;
+ISBN  NomeLivro
+----  -------------
+1111  Brida
+2222  O Alquimista
+3333  Dom Casmurro
+4444  O Guarani
+sqlite>
+sqlite>
+sqlite> INSERT INTO AUTORIA VALUES(1,"1111");
+sqlite> INSERT INTO AUTORIA VALUES(1,"2222");
+sqlite> INSERT INTO AUTORIA VALUES(2,"3333");
+sqlite> INSERT INTO AUTORIA VALUES(3,"4444");
+sqlite>
+sqlite> SELECT * FROM AUTORIA;
+Codi  ISBNLivro
+----  -------------
+1     1111
+1     2222
+2     3333
+3     4444
+sqlite> SELECT NOMEAUTOR,NOMELIVRO FROM AUTORES, LIVROS, AUTORIA;
+Nome  NomeLivro
+----  -------------
+Paulo Coelho  Brida
+Paulo Coelho  Brida
+Paulo Coelho  Brida
+Paulo Coelho  Brida
+Paulo Coelho  O Alquimista
+Paulo Coelho  O Alquimista
+Paulo Coelho  O Alquimista
+Paulo Coelho  O Alquimista
+Paulo Coelho  Dom Casmurro
+Paulo Coelho  Dom Casmurro
+Paulo Coelho  Dom Casmurro
+Paulo Coelho  Dom Casmurro
+Paulo Coelho  O Guarani
+Paulo Coelho  O Guarani
+Paulo Coelho  O Guarani
+Paulo Coelho  O Guarani
+Machado de Assis  Brida
+Machado de Assis  Brida
+Machado de Assis  Brida
+Machado de Assis  Brida
+Machado de Assis  O Alquimista
+Machado de Assis  O Alquimista
+Machado de Assis  O Alquimista
+Machado de Assis  O Alquimista
+Machado de Assis  Dom Casmurro
+Machado de Assis  Dom Casmurro
+Machado de Assis  Dom Casmurro
+Machado de Assis  Dom Casmurro
+Machado de Assis  O Guarani
+Machado de Assis  O Guarani
+Machado de Assis  O Guarani
+Machado de Assis  O Guarani
+Jose de Alencar  Brida
+Jose de Alencar  Brida
+Jose de Alencar  Brida
+Jose de Alencar  Brida
+Jose de Alencar  O Alquimista
+Jose de Alencar  O Alquimista
+Jose de Alencar  O Alquimista
+Jose de Alencar  O Alquimista
+Jose de Alencar  Dom Casmurro
+Jose de Alencar  Dom Casmurro
+Jose de Alencar  Dom Casmurro
+Jose de Alencar  Dom Casmurro
+Jose de Alencar  O Guarani
+Jose de Alencar  O Guarani
+Jose de Alencar  O Guarani
+Jose de Alencar  O Guarani
+sqlite> SELECT NOMEAUTOR,NOMELIVRO FROM AUTORES, LIVROS, AUTORIA
+   ...> WHERE LIVROS.CODIGOAUTOR=AUTORIA.CODIGOAUTOR;
+Error: no such column: LIVROS.CODIGOAUTOR
+sqlite> SELECT NOMEAUTOR,NOMELIVRO FROM AUTORES, LIVROS, AUTORIA
+   ...> WHERE AUTORES.CODIGOAUTOR=AUTORIA.CODIGOAUTOR;
+Nome  NomeLivro
+----  -------------
+Paulo Coelho  Brida
+Paulo Coelho  O Alquimista
+Paulo Coelho  Dom Casmurro
+Paulo Coelho  O Guarani
+Paulo Coelho  Brida
+Paulo Coelho  O Alquimista
+Paulo Coelho  Dom Casmurro
+Paulo Coelho  O Guarani
+Machado de Assis  Brida
+Machado de Assis  O Alquimista
+Machado de Assis  Dom Casmurro
+Machado de Assis  O Guarani
+Jose de Alencar  Brida
+Jose de Alencar  O Alquimista
+Jose de Alencar  Dom Casmurro
+Jose de Alencar  O Guarani
+sqlite> SELECT NOMEAUTOR,NOMELIVRO FROM AUTORES, LIVROS, AUTORIA
+   ...> WHERE AUTORES.CODIGOAUTOR=AUTORIA.CODIGOAUTOR
+   ...> AND LIVROS.ISBNLIVRO=AUTORIA.ISBNLIVRO;
+Nome  NomeLivro
+----  -------------
+Paulo Coelho  Brida
+Paulo Coelho  O Alquimista
+Machado de Assis  Dom Casmurro
+Jose de Alencar  O Guarani
+sqlite>
+sqlite>
+sqlite> SELECT * FROM AUTORES;
+Codi  NomeAutor
+----  -------------
+1     Paulo Coelho
+2     Machado de Assis
+3     Jose de Alencar
+sqlite> SELECT * FROM AUTORES ORDER BY NOMEAUTOR;
+Codi  NomeAutor
+----  -------------
+3     Jose de Alencar
+2     Machado de Assis
+1     Paulo Coelho
+sqlite> SELECT * FROM AUTORES ORDER BY NOMEAUTOR DESC;
+Codi  NomeAutor
+----  -------------
+1     Paulo Coelho
+2     Machado de Assis
+3     Jose de Alencar
+sqlite>
+sqlite>
+sqlite> SELECT * FROM AUTORES WHERE NOELIVRO LIKE "P%";
+Error: no such column: NOELIVRO
+sqlite> SELECT * FROM AUTORES WHERE NOMELIVRO LIKE "P%";
+Error: no such column: NOMELIVRO
+sqlite> SELECT * FROM AUTORES WHERE NOMEAUTOR LIKE "P%";
+Codi  NomeAutor
+----  -------------
+1     Paulo Coelho
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite> SELECT * FROM AUTORES WHERE NOMEAUTOR LIKE "P%";
+Codi  NomeAutor
+----  -------------
+1     Paulo Coelho
+sqlite> SELECT * FROM AUTORES WHERE NOMEAUTOR LIKE "PA%";
+Codi  NomeAutor
+----  -------------
+1     Paulo Coelho
+sqlite> SELECT * FROM AUTORES WHERE NOMEAUTOR LIKE "%S";
+Codi  NomeAutor
+----  -------------
+2     Machado de Assis
+sqlite> SELECT * FROM AUTORES WHERE NOMEAUTOR LIKE "%DE%";
+Codi  NomeAutor
+----  -------------
+2     Machado de Assis
+3     Jose de Alencar
+sqlite> SELECT * FROM AUTORES WHERE NOMEAUTOR LIKE "%DE%";
+Codi  NomeAutor
+----  -------------
+2     Machado de Assis
+3     Jose de Alencar
+sqlite>
+sqlite>
+sqlite> .quit

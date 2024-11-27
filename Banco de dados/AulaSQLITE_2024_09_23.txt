@@ -1,0 +1,513 @@
+Microsoft Windows [versão 10.0.19045.4894]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\PROFESSOR>cd \sqlite
+
+C:\sqlite>SQLITE3 EMPRESA.DB
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+sqlite>
+sqlite> .tables
+sqlite> .schema
+sqlite>
+sqlite> CREATE TABLE FUNCIONARIOS(
+   ...> CODFUNC INT PRIMARY KEY,
+   ...> NOMEFUNC VARCHAR(30),
+   ...> ENDERECOFUNC VARCHAR(30),
+   ...> CIDADEFUNC VARCHAR(20),
+   ...> ESTADOFUNC CHAR(2),
+   ...> SALARIOFUNC FLOAT);
+sqlite>
+sqlite> .tables
+FUNCIONARIOS
+sqlite> .schema
+CREATE TABLE FUNCIONARIOS(
+CODFUNC INT PRIMARY KEY,
+NOMEFUNC VARCHAR(30),
+ENDERECOFUNC VARCHAR(30),
+CIDADEFUNC VARCHAR(20),
+ESTADOFUNC CHAR(2),
+SALARIOFUNC FLOAT);
+sqlite>
+sqlite>
+sqlite> ALTER TABLE FUNCIONARIOS ADD COLUMN BAIRROFUNC VARCHAR(20);
+sqlite> .schema
+CREATE TABLE FUNCIONARIOS(
+CODFUNC INT PRIMARY KEY,
+NOMEFUNC VARCHAR(30),
+ENDERECOFUNC VARCHAR(30),
+CIDADEFUNC VARCHAR(20),
+ESTADOFUNC CHAR(2),
+SALARIOFUNC FLOAT, BAIRROFUNC VARCHAR(20));
+sqlite>
+sqlite>
+sqlite> SELECT * FROM FUNCIONARIOS;
+sqlite>
+sqlite>
+sqlite> INSERT INTO FUNCIONARIOS VALUES(1, "Pedro Lemos", "Av. Copacabana, 1300", "Rio de Janeiro", "RJ", 2500, "Copacabana", 1);
+Error: table FUNCIONARIOS has 7 columns but 8 values were supplied
+sqlite>
+sqlite> SELECT * FROM FUNCIONARIOS;
+sqlite> INSERT INTO FUNCIONARIOS VALUES(1, "Pedro Lemos", "Av. Copacabana, 1300", "Rio de Janeiro", "RJ", 2500, "Copacabana");
+sqlite> SELECT * FROM FUNCIONARIOS;
+1|Pedro Lemos|Av. Copacabana, 1300|Rio de Janeiro|RJ|2500.0|Copacabana
+sqlite>
+sqlite> .headers on
+sqlite> SELECT * FROM FUNCIONARIOS;
+CODFUNC|NOMEFUNC|ENDERECOFUNC|CIDADEFUNC|ESTADOFUNC|SALARIOFUNC|BAIRROFUNC
+1|Pedro Lemos|Av. Copacabana, 1300|Rio de Janeiro|RJ|2500.0|Copacabana
+sqlite>
+sqlite> .explain on
+sqlite>
+sqlite>
+sqlite> SELECT * FROM FUNCIONARIOS;
+CODF  NOMEFUNC       ENDE  CIDA  ESTA  SALARIOFUNC    BA
+----  -------------  ----  ----  ----  -------------  --
+1     Pedro Lemos    Av. Copacabana, 1300  Rio de Janeiro  RJ    2500.0         Copacabana
+sqlite>
+sqlite>
+sqlite> INSERT INTO FUNCIONARIOS VALUES(1, "Marcos Silva", "Rua conde Bomfim, 789", "Rio de Janeiro", "RJ", 3500, "Tijuca");
+Error: UNIQUE constraint failed: FUNCIONARIOS.CODFUNC
+sqlite> INSERT INTO FUNCIONARIOS VALUES(2, "Marcos Silva", "Rua conde Bomfim, 789", "Rio de Janeiro", "RJ", 3500, "Tijuca");
+sqlite> INSERT INTO FUNCIONARIOS VALUES(3, "Ana Lemos", "Av. Gal Roca, 89", "Rio de Janeiro", "RJ", 4500, "Tijuca");
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC, SALARIOFUNC FROM FUNCIONARIOS;
+NOME  SALARIOFUNC
+----  -------------
+Pedro Lemos  2500.0
+Marcos Silva  3500.0
+Ana Lemos  4500.0
+sqlite>
+sqlite> UPDATE FUNCIONARIOS
+   ...> SET SALARIOFUNC = SALARIOFUNC * 1.2;
+sqlite> SELECT NOMEFUNC, SALARIOFUNC FROM FUNCIONARIOS;
+NOME  SALARIOFUNC
+----  -------------
+Pedro Lemos  3000.0
+Marcos Silva  4200.0
+Ana Lemos  5400.0
+sqlite>
+sqlite>
+sqlite> CREATE TABLE LIXO(
+   ...> X INT,
+   ...> Y VARCHAR(30));
+sqlite>
+sqlite> INSERT INTO LIXO VALUES(1,"AAAAAAAAA");
+sqlite> INSERT INTO LIXO VALUES(1,"AAAAAAAAA");
+sqlite> INSERT INTO LIXO VALUES(1,"AAAAAAAAA");
+sqlite> INSERT INTO LIXO VALUES(1,"AAAAAAAAA");
+sqlite> INSERT INTO LIXO VALUES(1,"AAAAAAAAA");
+sqlite> INSERT INTO LIXO VALUES(1,"AAAAAAAAA");
+sqlite> INSERT INTO LIXO VALUES(1,"AAAAAAAAA");
+sqlite>
+sqlite> SELECT * FROM LIXO;
+X     Y
+----  -------------
+1     AAAAAAAAA
+1     AAAAAAAAA
+1     AAAAAAAAA
+1     AAAAAAAAA
+1     AAAAAAAAA
+1     AAAAAAAAA
+1     AAAAAAAAA
+sqlite>
+sqlite>
+sqlite> .tables
+FUNCIONARIOS  LIXO
+sqlite> .schema
+CREATE TABLE FUNCIONARIOS(
+CODFUNC INT PRIMARY KEY,
+NOMEFUNC VARCHAR(30),
+ENDERECOFUNC VARCHAR(30),
+CIDADEFUNC VARCHAR(20),
+ESTADOFUNC CHAR(2),
+SALARIOFUNC FLOAT, BAIRROFUNC VARCHAR(20));
+CREATE TABLE LIXO(
+X INT,
+Y VARCHAR(30));
+sqlite>
+sqlite> DROP TABLE LIXO;
+sqlite> .tables
+FUNCIONARIOS
+sqlite> .schema
+CREATE TABLE FUNCIONARIOS(
+CODFUNC INT PRIMARY KEY,
+NOMEFUNC VARCHAR(30),
+ENDERECOFUNC VARCHAR(30),
+CIDADEFUNC VARCHAR(20),
+ESTADOFUNC CHAR(2),
+SALARIOFUNC FLOAT, BAIRROFUNC VARCHAR(20));
+sqlite>
+sqlite>
+sqlite> SELECT * FROM FUNCIONARIOS;
+CODF  NOMEFUNC       ENDE  CIDA  ESTA  SALARIOFUNC    BA
+----  -------------  ----  ----  ----  -------------  --
+1     Pedro Lemos    Av. Copacabana, 1300  Rio de Janeiro  RJ    3000.0         Copacabana
+2     Marcos Silva   Rua conde Bomfim, 789  Rio de Janeiro  RJ    4200.0         Tijuca
+3     Ana Lemos      Av. Gal Roca, 89  Rio de Janeiro  RJ    5400.0         Tijuca
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS;
+NOME
+----
+Pedro Lemos
+Marcos Silva
+Ana Lemos
+sqlite>
+sqlite> DELETE FROM FUNCIONARIOS WHERE CODFUNC=3;
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS;
+NOME
+----
+Pedro Lemos
+Marcos Silva
+sqlite> INSERT INTO FUNCIONARIOS VALUES(3, "Ana Lemos", "Av. Gal Roca, 89", "Rio de Janeiro", "RJ", 4500, "Tijuca");
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS;
+NOME
+----
+Pedro Lemos
+Marcos Silva
+Ana Lemos
+sqlite>
+sqlite> CREATE TABLE DEPTOS(
+   ...> CODDEPTO INT PRIMARY KEY,
+   ...> NOMEDEPTO VARCHAR(20));
+sqlite>
+sqlite> .tables
+DEPTOS        FUNCIONARIOS
+sqlite> .schema
+CREATE TABLE FUNCIONARIOS(
+CODFUNC INT PRIMARY KEY,
+NOMEFUNC VARCHAR(30),
+ENDERECOFUNC VARCHAR(30),
+CIDADEFUNC VARCHAR(20),
+ESTADOFUNC CHAR(2),
+SALARIOFUNC FLOAT, BAIRROFUNC VARCHAR(20));
+CREATE TABLE DEPTOS(
+CODDEPTO INT PRIMARY KEY,
+NOMEDEPTO VARCHAR(20));
+sqlite>
+sqlite> INSERT INTO DEPTOS VALUES(1,"Vendas");
+sqlite> INSERT INTO DEPTOS VALUES(2,"Financeiro");
+sqlite> INSERT INTO DEPTOS VALUES(3,"Segurança");
+sqlite>
+sqlite> SELECT * FROM DEPTOS;
+CODD  NOMEDEPTO
+----  -------------
+1     Vendas
+2     Financeiro
+3     Segurança
+sqlite>
+sqlite>
+sqlite> ALTER TABLE FUNCIONAIOS ADD COLUMN CODDEPTO INT;
+Error: no such table: FUNCIONAIOS
+sqlite> ALTER TABLE FUNCIONARIOS ADD COLUMN CODDEPTO INT;
+sqlite>
+sqlite>
+sqlite> .schema
+CREATE TABLE FUNCIONARIOS(
+CODFUNC INT PRIMARY KEY,
+NOMEFUNC VARCHAR(30),
+ENDERECOFUNC VARCHAR(30),
+CIDADEFUNC VARCHAR(20),
+ESTADOFUNC CHAR(2),
+SALARIOFUNC FLOAT, BAIRROFUNC VARCHAR(20), CODDEPTO INT);
+CREATE TABLE DEPTOS(
+CODDEPTO INT PRIMARY KEY,
+NOMEDEPTO VARCHAR(20));
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC, CODDEPTO FROM FUNCIONARIOS;
+NOME  CODDEPTO
+----  -------------
+Pedro Lemos
+Marcos Silva
+Ana Lemos
+sqlite>
+sqlite> UPDATE FUNCIONARIO SET CODDEPTO = 1;
+Error: no such table: FUNCIONARIO
+sqlite> UPDATE FUNCIONARIOS SET CODDEPTO = 1;
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC, CODDEPTO FROM FUNCIONARIOS;
+NOME  CODDEPTO
+----  -------------
+Pedro Lemos  1
+Marcos Silva  1
+Ana Lemos  1
+sqlite> UPDATE FUNCIONARIOS SET CODDEPTO = 2
+   ...> WHERE CODFUNC = 2;
+sqlite> UPDATE FUNCIONARIOS SET CODDEPTO = 3
+   ...> WHERE CODFUNC = 3;
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC, CODDEPTO FROM FUNCIONARIOS;
+NOME  CODDEPTO
+----  -------------
+Pedro Lemos  1
+Marcos Silva  2
+Ana Lemos  3
+sqlite>
+sqlite> SELECT NOMEFUNC, NOMEDEPTO FROM FUNCIONARIOS;
+Error: no such column: NOMEDEPTO
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC, NOMEDEPTO
+   ...> FROM FUNCIONARIOS, DEPTOS;
+NOME  NOMEDEPTO
+----  -------------
+Pedro Lemos  Vendas
+Pedro Lemos  Financeiro
+Pedro Lemos  Segurança
+Marcos Silva  Vendas
+Marcos Silva  Financeiro
+Marcos Silva  Segurança
+Ana Lemos  Vendas
+Ana Lemos  Financeiro
+Ana Lemos  Segurança
+sqlite> SELECT NOMEFUNC, NOMEDEPTO
+   ...> FROM FUNCIONARIOS, DEPTOS
+   ...> WHERE FUNCIONARIOS.CODDEPTO=DEPTOS.CODDEPTO;
+NOME  NOMEDEPTO
+----  -------------
+Pedro Lemos  Vendas
+Marcos Silva  Financeiro
+Ana Lemos  Segurança
+sqlite>
+sqlite>
+sqlite> SELECT BAIRROFUNC FROM FUNCIONARIOS;
+BAIR
+----
+Copacabana
+Tijuca
+Tijuca
+sqlite>
+sqlite> SELECT DISTINC BAIRROFUNC FROM FUNCIONARIOS;
+Error: no such column: DISTINC
+sqlite>
+sqlite> SELECT DISTINCT BAIRROFUNC FROM FUNCIONARIOS;
+BAIR
+----
+Copacabana
+Tijuca
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC, SALARIOFUNC FROM FUNCIONARIOS;
+NOME  SALARIOFUNC
+----  -------------
+Pedro Lemos  3000.0
+Marcos Silva  4200.0
+Ana Lemos  4500.0
+sqlite> SELECT NOMEFUNC, SALARIOFUNC FROM FUNCIONARIOS
+   ...> WHERE SALARIOFUNC < 4500;
+NOME  SALARIOFUNC
+----  -------------
+Pedro Lemos  3000.0
+Marcos Silva  4200.0
+sqlite> SELECT NOMEFUNC, SALARIOFUNC FROM FUNCIONARIOS
+   ...> WHERE SALARIOFUNC > 3000;
+NOME  SALARIOFUNC
+----  -------------
+Marcos Silva  4200.0
+Ana Lemos  4500.0
+sqlite> SELECT NOMEFUNC, SALARIOFUNC FROM FUNCIONARIOS
+   ...> WHERE SALARIOFUNC > 3000
+   ...> AND SALARIOFUNC <4500;
+NOME  SALARIOFUNC
+----  -------------
+Marcos Silva  4200.0
+sqlite>
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC, SALARIOFUNC FROM FUNCIONARIOS
+   ...> WHERE SALARIOFUNC BETWEEN 3100 AND 4300;
+NOME  SALARIOFUNC
+----  -------------
+Marcos Silva  4200.0
+sqlite> SELECT NOMEFUNC, SALARIOFUNC FROM FUNCIONARIOS
+   ...> WHERE SALARIOFUNC BETWEEN 3000 AND 4500;
+NOME  SALARIOFUNC
+----  -------------
+Pedro Lemos  3000.0
+Marcos Silva  4200.0
+Ana Lemos  4500.0
+sqlite>
+sqlite>
+sqlite> INSERT INTO FUNCIONARIOS VALUES(4, "Paula Ramos", "Av. Sacopema, 189", "Sao Paulo", "SP", 14500, "Alphavile");
+Error: table FUNCIONARIOS has 8 columns but 7 values were supplied
+sqlite> INSERT INTO FUNCIONARIOS VALUES(4, "Paula Ramos", "Av. Sacopema, 189", "Sao Paulo", "SP", 14500, "Alphavile",3);
+sqlite>
+sqlite>
+sqlite>
+sqlite> INSERT INTO FUNCIONARIOS VALUES(4, "Paula Ramos", "Av. Sacopema, 189", "Sao Paulo", "SP", 14500,
+   ...>
+   ...> ;
+Error: near ";": syntax error
+sqlite>
+sqlite>
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC, ESTADOFUNC FROM FUNCIONARIOS;
+NOME  ESTADOFUNC
+----  -------------
+Pedro Lemos  RJ
+Marcos Silva  RJ
+Ana Lemos  RJ
+Paula Ramos  SP
+sqlite> SELECT NOMEFUNC, ESTADOFUNC FROM FUNCIONARIOS
+   ...> WHERE ESTADOFUNC = "RJ";
+NOME  ESTADOFUNC
+----  -------------
+Pedro Lemos  RJ
+Marcos Silva  RJ
+Ana Lemos  RJ
+sqlite> WHERE ESTADOFUNC <> "SP";
+Error: near "WHERE": syntax error
+sqlite> SELECT NOMEFUNC, ESTADOFUNC FROM FUNCIONARIOS
+   ...> WHERE ESTADOFUNC <> "RJ";
+NOME  ESTADOFUNC
+----  -------------
+Paula Ramos  SP
+sqlite> SELECT NOMEFUNC, ESTADOFUNC FROM FUNCIONARIOS
+   ...> WHERE ESTADOFUNC <> "SP";
+NOME  ESTADOFUNC
+----  -------------
+Pedro Lemos  RJ
+Marcos Silva  RJ
+Ana Lemos  RJ
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC, ESTADOFUNC FROM FUNCIONARIOS;
+NOME  ESTADOFUNC
+----  -------------
+Pedro Lemos  RJ
+Marcos Silva  RJ
+Ana Lemos  RJ
+Paula Ramos  SP
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS
+   ...> WHERE NOMEFUNC LIKE "P%";
+NOME
+----
+Pedro Lemos
+Paula Ramos
+sqlite> WHERE NOMEFUNC LIKE "%S";
+Error: near "WHERE": syntax error
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS
+   ...> WHERE NOMEFUNC LIKE "%S";
+NOME
+----
+Pedro Lemos
+Ana Lemos
+Paula Ramos
+sqlite>
+sqlite>
+sqlite> UPDATE FUNCIONARIOS
+   ...> SET NOMEFUNC = "Pedro de Lemos"
+   ...> WHERE NOMEFUNC = "Pedro Lemos";
+sqlite>
+sqlite>
+sqlite> UPDATE FUNCIONARIOS
+   ...> SET NOMEFUNC = "Paula Ramos Fernandes"
+   ...> WHERE NOMEFUNC = "Paula Ramos";
+sqlite>
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS
+   ...> ;
+NOME
+----
+Pedro de Lemos
+Marcos Silva
+Ana Lemos
+Paula Ramos Fernandes
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS
+   ...> WHERE NOMEFUNC LIKE "%de%";
+NOME
+----
+Pedro de Lemos
+Paula Ramos Fernandes
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS
+   ...> WHERE NOMEFUNC LIKE "% de %";
+NOME
+----
+Pedro de Lemos
+sqlite>
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS
+   ...> WHERE NOMEFUNC LIKE "p%"
+   ...> or NOMEFUNC LIKE "%S";
+NOME
+----
+Pedro de Lemos
+Ana Lemos
+Paula Ramos Fernandes
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS
+   ...> WHERE NOMEFUNC LIKE "p%"
+   ...> AND NOMEFUNC LIKE "%S";
+NOME
+----
+Pedro de Lemos
+Paula Ramos Fernandes
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS
+   ...> WHERE NOMEFUNC LIKE "p%"
+   ...> ;
+NOME
+----
+Pedro de Lemos
+Paula Ramos Fernandes
+sqlite>
+sqlite>
+sqlite> SELECT NOMEFUNC FROM FUNCIONARIOS
+   ...> WHERE NOMEFUNC LIKE "pe%"
+   ...> ;
+NOME
+----
+Pedro de Lemos
+sqlite> select nomefunc, salariofunc from funcionarios;
+NOME  SALARIOFUNC
+----  -------------
+Pedro de Lemos  3000.0
+Marcos Silva  4200.0
+Ana Lemos  4500.0
+Paula Ramos Fernandes  14500.0
+sqlite>
+sqlite>
+sqlite> SELECT COUNT(*) FROM FUNCIONARIOS;
+COUN
+----
+4
+sqlite> SELECT SUM(SALARIOFUNC) FROM FUNCIONARIOS;
+SUM(
+----
+26200.0
+sqlite> SELECT AVG(SALARIOFUNC) FROM FUNCIONARIOS;
+AVG(
+----
+6550.0
+sqlite> SELECT MIN(SALARIOFUNC) FROM FUNCIONARIOS;
+MIN(
+----
+3000.0
+sqlite> SELECT MAX(SALARIOFUNC) FROM FUNCIONARIOS;
+MAX(
+----
+14500.0
+sqlite> SELECT COUNT(*),BAIRROFUNC FROM FUNCIONARIOS
+   ...> GROUP BY BAIRROFUNC;
+COUN  BAIRROFUNC
+----  -------------
+1     Alphavile
+1     Copacabana
+2     Tijuca
+sqlite> SELECT COUNT(*),BAIRROFUNC FROM FUNCIONARIOS
+   ...> GROUP BY BAIRROFUNC
+   ...> HAVING COUNT(*) >1;
+COUN  BAIRROFUNC
+----  -------------
+2     Tijuca
+sqlite> .quit
