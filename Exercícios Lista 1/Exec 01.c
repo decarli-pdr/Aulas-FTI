@@ -1,5 +1,7 @@
 /* Exercício 1  19FEV2024
-Asp 1021 Pedro DE CARLI Silva*/
+Asp 1021 Pedro DE CARLI Silva
+CALCULAR E EXIBIR A RELAÇÃO DE NÚMEROS PARES ATÉ 10, INCLUSIVE.
+*/
 
 #include <stdio.h> //inclui os comandos printf e scanf
 

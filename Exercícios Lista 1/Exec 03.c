@@ -1,5 +1,11 @@
 /* Exercício 3  19FEV2024
-Asp 1021 Pedro DE CARLI Silva*/
+Asp 1021 Pedro DE CARLI Silva
+------------------------------------------------------------------------
+CONSTRUA UM PROGRAMA QUE LEIA UM CONJUNTO DE NÚMEROS INTEIROS 
+POSITIVOS, REALIZE A SOMA DELES ATÉ SER ENCONTARDO UM  FLAG = -1 E IMPRIMA 
+ESTA SOMA. 
+------------------------------------------------------------------------
+*/
 
 #include <stdio.h> //inclui os comandos printf e scanf
 

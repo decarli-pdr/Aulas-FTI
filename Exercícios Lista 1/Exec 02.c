@@ -1,5 +1,10 @@
 /* Exercício 2  19FEV2024
-Asp 1021 Pedro DE CARLI Silva*/
+Asp 1021 Pedro DE CARLI Silva
+------------------------------------------------------------------------
+CALCULAR E EXIBIR A RELAÇÃO DOS NÚMEROS PARES ATÉ “N”.  O VALOR DE “N” É 
+FORNECIDO PELO USUÁRIO E É MAIOR QUE ZERO.
+------------------------------------------------------------------------
+*/
 
 #include <stdio.h> //inclui os comandos printf e scanf
 
