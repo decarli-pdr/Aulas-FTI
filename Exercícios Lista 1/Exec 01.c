@@ -10,9 +10,9 @@ int main() // é a função principal
     {
         if (i % 2 == 0) // se i dividido por 2 tiver resto 0:
         {
-            printf("\n%d", i); // imprima i
+            printf("\n%d", i); // imprima i formatado
         }
-        i++; // Aumente i em 1
+        i++; // Aumente i em 1 a cada repetição
     }
 
     return 0;
